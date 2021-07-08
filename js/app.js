@@ -282,46 +282,113 @@ document.addEventListener('keydown', function (e) {
 
 let count = 0;
 let width;
-const container = document.querySelector('.gallery__container');
-const track = document.querySelector('.slider-track');
-const items = document.querySelectorAll('.slider-track img');
-const btnPrev = document.querySelector('.btn-prev');
-const btnNext = document.querySelector('.btn-next');
+const container = document.querySelector(".gallery__container");
+const track = document.querySelector(".slider-track");
+const items = document.querySelectorAll(".slider-track img");
+const btnPrev = document.querySelector(".btn-prev");
+const btnNext = document.querySelector(".btn-next");
+//mobile devices (touch events): чувствительность — количество пикселей, после которого жест будет считаться свайпом
+const sensitivity = 20;
 
 function calcWidth() {
-    width = container.offsetWidth;
-    track.style.width = width * items.length + 'px';
-    items.forEach(item => {
-        item.style.width = width + 'px';
-        item.style.height = 'auto';
-    });
-    rollSlider();
+  width = container.offsetWidth;
+  track.style.width = width * items.length + "px";
+  items.forEach((item) => {
+    item.style.width = width + "px";
+    item.style.height = "auto";
+  });
+  rollSlider();
 }
 
 calcWidth();
 
 //при изменении размера представления документа/окна - вызвать calcWidth
-window.addEventListener('resize', calcWidth);
-
-document.querySelector('.btn-next').addEventListener('click', function () {
-    count++;
-    if (count >= items.length) {
-        count = 0;
-    }
-    rollSlider(); // при изменении размеров экрана пересчитывает смещение и ширину
-});
-
-document.querySelector('.btn-prev').addEventListener('click', function () {
-    count--;
-    if (count < 0) {
-        count = items.length - 1;
-    }
-    rollSlider();
-});
+window.addEventListener("resize", calcWidth);
 
 function rollSlider() {
-	// перемещает на ширину одного слайда
-	track.style.transform = 'translate(-' + count * width + 'px)';
-
+  // перемещает на ширину одного слайда
+  track.style.transform = "translate(-" + count * width + "px)";
 }
 
+function moveRight() {
+  count--;
+  if (count < 0) {
+    count = items.length - 1;
+  }
+}
+
+function moveLeft() {
+  count++;
+    if (count >= items.length) {
+      count = 0;
+    }
+}
+
+// на десктопах
+  btnNext.addEventListener("click", function () {
+    moveLeft();
+    rollSlider(); // при изменении размеров экрана пересчитывает смещение и ширину
+  });
+  btnPrev.addEventListener("click", function () {
+    moveRight();
+    rollSlider();
+  });
+
+//mobile devices - touch events
+let touchStart = null; //Точка начала касания
+let touchPosition = null; //Текущая позиция
+//Начало касания
+track.addEventListener("touchstart", function (e) { TouchStart(e); }); 
+//Движение пальцем по экрану
+track.addEventListener("touchmove", function (e) { TouchMove(e); }); 
+//Пользователь отпустил экран
+track.addEventListener("touchend", function (e) { TouchEnd(e); });
+
+function TouchStart(e) {
+  //текущая позиция касания
+  touchStart = { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+  touchPosition = { x: touchStart.x, y: touchStart.y };
+}
+function TouchMove(e) {
+  e.preventDefault();
+  touchPosition = { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+}
+function TouchEnd(e) {
+  // проверка какой жест совершил пользователь
+  CheckAction(); 
+  // обнуление позиций
+  touchStart = null;
+  touchPosition = null;
+}
+
+
+function CheckAction() {
+
+  // Расстояния от начальной до конечной точек по обеим осям
+    let d = 
+    {
+   	 x: touchStart.x - touchPosition.x,
+   	 y: touchStart.y - touchPosition.y
+    };
+    // Проверка: движение по какой оси было длиннее
+    if(Math.abs(d.x) > Math.abs(d.y)) 
+    {
+    // Проверка: было ли движение достаточно длинным
+   	 if(Math.abs(d.x) > sensitivity) 
+   	 {
+      // больше нуля - движение пальцем справа налево
+   		 if(d.x > 0) 
+   		 {
+        // console.log("Swipe left");
+        moveLeft();
+        rollSlider();
+   		 }
+   		 else // иначе - движение слева направо
+   		 {
+        // console.log("Swipe right");
+        moveRight();
+        rollSlider();
+   		 }
+   	 }
+    }
+  }

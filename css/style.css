@@ -543,16 +543,46 @@ body._touch .menu__list > li._active .menu__arrow {
 
 .btn-prev {
   position: absolute;
-  top: calc(50% - 31.5px);
+  top: calc(50% - (40px * 0.72)/2);
   left: 10px;
   z-index: 100;
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .btn-next {
   position: absolute;
-  top: calc(50% - 31.5px);
+  top: calc(50% - (40px * 0.72)/2);
   right: 10px;
   z-index: 100;
+}
+
+.block-arrows {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.block-arrows::before {
+  content: "";
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(40px * 0.72);
+          flex: 0 0 calc(40px * 0.72);
+  width: calc(40px * 0.72);
+  height: calc(40px * 0.72);
+  border-top: 5px solid white;
+  border-right: 5px solid white;
+  margin-right: 15px;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 .classes {
@@ -1264,6 +1294,14 @@ body._touch .menu__list > li._active .menu__arrow {
         -ms-flex: 0 0 90%;
             flex: 0 0 90%;
     margin: 0px 15px 0px 0px;
+  }
+
+  .btn-prev {
+    display: none;
+  }
+
+  .btn-next {
+    display: none;
   }
 
   .classes__items {
