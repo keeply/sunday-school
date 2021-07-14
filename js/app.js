@@ -287,11 +287,24 @@ const track = document.querySelector(".slider-track");
 const items = document.querySelectorAll(".slider-track img");
 const btnPrev = document.querySelector(".btn-prev");
 const btnNext = document.querySelector(".btn-next");
+const indicatorParent = document.querySelector('.control ul'); 
+const indicators = document.querySelectorAll('.control li');
 //mobile devices (touch events): чувствительность — количество пикселей, после которого жест будет считаться свайпом
 const sensitivity = 20;
 
+// навигация по точкам
+indicators.forEach((indicator, i) => {
+  indicator.addEventListener('click', () => {
+    document.querySelector('.control .selected').classList.remove('selected');
+    indicator.classList.add('selected');
+    count = i;
+    rollSlider();
+  });
+});
+
+
 function calcWidth() {
-  width = container.offsetWidth;
+  width = container.clientWidth;
   track.style.width = width * items.length + "px";
   items.forEach((item) => {
     item.style.width = width + "px";
@@ -324,13 +337,17 @@ function moveLeft() {
     }
 }
 
-// на десктопах
+// на десктопах навигация по стрелкам
   btnNext.addEventListener("click", function () {
     moveLeft();
+    document.querySelector('.control .selected').classList.remove('selected');
+    indicatorParent.children[count].classList.add('selected');
     rollSlider(); // при изменении размеров экрана пересчитывает смещение и ширину
   });
   btnPrev.addEventListener("click", function () {
     moveRight();
+    document.querySelector('.control .selected').classList.remove('selected');
+    indicatorParent.children[count].classList.add('selected');
     rollSlider();
   });
 
