@@ -383,7 +383,7 @@ body._touch .menu__list > li._active .menu__arrow {
 }
 
 .hello {
-  padding: 38px 0px 70px 0px;
+  padding: 70px 0px 70px 0px;
 }
 
 .hello__container {
@@ -420,9 +420,9 @@ body._touch .menu__list > li._active .menu__arrow {
 
 .hello__avatar {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 243px;
-          flex: 0 0 243px;
-  height: 243px;
+      -ms-flex: 0 0 343px;
+          flex: 0 0 343px;
+  height: 343px;
   position: relative;
   border-radius: 50%;
   -webkit-box-shadow: -5px 13px 0px 0px #edf7fa;
@@ -549,7 +549,7 @@ body._touch .menu__list > li._active .menu__arrow {
 
 .btn-prev {
   position: absolute;
-  top: calc(50% - (40px * 0.72)/2);
+  top: calc(50% - (40px * 0.72) / 2);
   left: 10px;
   z-index: 100;
   -webkit-transform: rotate(180deg);
@@ -559,7 +559,7 @@ body._touch .menu__list > li._active .menu__arrow {
 
 .btn-next {
   position: absolute;
-  top: calc(50% - (40px * 0.72)/2);
+  top: calc(50% - (40px * 0.72) / 2);
   right: 10px;
   z-index: 100;
 }
@@ -629,6 +629,7 @@ body._touch .menu__list > li._active .menu__arrow {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 50px 0;
 }
 
 .classes__items {
@@ -800,6 +801,10 @@ body._touch .menu__list > li._active .menu__arrow {
   margin: 0px 20px;
 }
 
+.contacts {
+  padding: 50px 0;
+}
+
 .contacts__title {
   margin: 0px 0px 40px 0px;
 }
@@ -817,6 +822,14 @@ body._touch .menu__list > li._active .menu__arrow {
 
 .contacts__tel {
   padding: 0 0 20px 0;
+}
+
+.contacts__tel a {
+  color: #8695a4;
+}
+
+.contacts__tel a:hover {
+  text-decoration: underline;
 }
 
 .contacts__email {
@@ -941,7 +954,7 @@ body._touch .menu__list > li._active .menu__arrow {
 }
 
 .page {
-  padding: 90px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
@@ -1335,7 +1348,7 @@ body._touch .menu__list > li._active .menu__arrow {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 90%;
             flex: 0 0 90%;
-    margin: 0px 15px 0px 0px;
+    margin: 0px 0px 0px 0px;
   }
 
   .btn-prev {
