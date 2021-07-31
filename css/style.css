@@ -636,10 +636,6 @@ body._touch .menu__list > li._active .menu__arrow {
   padding: 0px 0px 60px 0px;
 }
 
-.classes__main-title {
-  margin: 0px 0px 45px 0px;
-}
-
 .classes__item {
   padding: 0px 0px 30px 0px;
   margin: 0px 0px 30px 0px;
@@ -719,13 +715,8 @@ body._touch .menu__list > li._active .menu__arrow {
   padding: 50px 0;
 }
 
-.price__title {
-  margin: 0px 0px 30px 0px;
-}
-
 .price__body {
   margin: 0px auto;
-  padding-top: 50px;
 }
 
 .price__row {
@@ -764,9 +755,9 @@ body._touch .menu__list > li._active .menu__arrow {
 
 .price__item:hover {
   background-color: #d2e5eb;
-  -webkit-transition: background-color .3s ease 0s;
-  -o-transition: background-color .3s ease 0s;
-  transition: background-color .3s ease 0s;
+  -webkit-transition: background-color 0.3s ease 0s;
+  -o-transition: background-color 0.3s ease 0s;
+  transition: background-color 0.3s ease 0s;
 }
 
 .price__subtitle {
@@ -1000,19 +991,7 @@ body._touch .menu__list > li._active .menu__arrow {
   font-weight: 700;
   color: #21243d;
   line-height: 136.36364%;
-}
-
-.text {
-  font-size: 16px;
-  line-height: 143.75%;
-  color: #21243d;
-}
-
-.title {
-  font-size: 44px;
-  font-weight: 700;
-  color: #21243d;
-  line-height: 136.36364%;
+  margin: 0px 0px 40px 0px;
 }
 
 .text {
@@ -1101,7 +1080,7 @@ body._touch .menu__list > li._active .menu__arrow {
 @media (max-width: 991.98px) {
   ._container {
     max-width: none;
-    padding: 0 10px;
+    padding: 50px 20px 0px 20px;
   }
 
   .price__row {
@@ -1115,7 +1094,7 @@ body._touch .menu__list > li._active .menu__arrow {
   }
 
   .hello {
-    padding: 0px 0px 70px 0px;
+    padding: 70px 0px 70px 0px;
   }
 
   .hello__content {
@@ -1383,7 +1362,7 @@ body._touch .menu__list > li._active .menu__arrow {
 
   .price__title {
     text-align: center;
-    margin: 0px 0px 0px 0px;
+    margin: 0px;
   }
 
   .price__btn {
@@ -1400,14 +1379,6 @@ body._touch .menu__list > li._active .menu__arrow {
   .popup-form__input {
     margin-bottom: 10px;
     text-align: center;
-  }
-
-  .page {
-    padding: 30px 0px 0px 0px;
-  }
-
-  .title {
-    font-size: 32px;
   }
 
   .title {
